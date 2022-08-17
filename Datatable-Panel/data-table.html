@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="display">
+        <table id="table" class="stripe">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>No</th>
+                    <th>CoordinateX</th>
+                    <th>CoordinateY</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+        $.ajax({
+            url: apiUrl,
+            type: "GET",
+            success: function (data) {
+                $('#table').DataTable( {
+                    data: data,
+                    columns: [
+                        { data: 'name' },
+                        { data: 'no' },
+                        { data: 'coordinateX' },
+                        { data: 'coordinateY' }
+                    ]
+                } );
+            }
+        });
+    });
+
+</script>
+
+</html>
